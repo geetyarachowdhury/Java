@@ -1,0 +1,37 @@
+Consider a database table, Emails, which has the attributes First Name and Email ID. Given  rows of data simulating the Emails table, print an alphabetically-ordered list of people whose email address ends in .
+-----------------------------------------------------------------------------------------------------
+import java.io.*;
+import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.function.*;
+import java.util.regex.*;
+import java.util.stream.*;
+import static java.util.stream.Collectors.joining;
+import static java.util.stream.Collectors.toList;
+
+
+
+public class Solution {
+    public static void main(String[] args) throws IOException {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        List<String> l = new ArrayList();
+        String s = "@gmail\\.com$";
+        Pattern p = Pattern.compile(s);
+        for(int i = 0; i<n; i++) {
+            String name = sc.next();
+            String email = sc.next();
+            Matcher m = p.matcher(email);
+            if(m.find()){
+                l.add(name);    
+            }
+        }    
+        Collections.sort(l);
+        for(String str : l) {
+            System.out.println(str);
+        }
+    }
+}
